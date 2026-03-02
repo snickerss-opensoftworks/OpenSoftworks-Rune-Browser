@@ -27,6 +27,7 @@ A lightweight WPF browser combining the spirit of **Brave** and **Microsoft Edge
 |---|---|
 | `Ctrl+T` | New tab |
 | `Ctrl+W` | Close current tab |
+| `Ctrl+H` | Search History Page |
 | `Ctrl+L` | Focus address bar |
 | `Ctrl+D` | Bookmark page |
 | `F5` | Refresh |

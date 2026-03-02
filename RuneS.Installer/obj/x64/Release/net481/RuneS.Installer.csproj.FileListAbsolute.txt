@@ -1,0 +1,16 @@
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\bin\x64\Release\net481\RuneS_Setup.exe.config
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\bin\x64\Release\net481\RuneS_Setup.exe
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\bin\x64\Release\net481\RuneS_Setup.pdb
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\RuneS.Installer.csproj.AssemblyReference.cache
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\SetupWindow.baml
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\SetupWindow.g.cs
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\App.g.cs
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\RuneS_Setup_MarkupCompile.cache
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\RuneS_Setup.g.resources
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\RuneS.Installer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\RuneS.Installer.AssemblyInfoInputs.cache
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\RuneS.Installer.AssemblyInfo.cs
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\RuneS.Installer.csproj.CoreCompileInputs.cache
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\RuneS_Setup.exe
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\RuneS_Setup.pdb
+C:\Users\Student\Downloads\RuneS_Browser (2)\RuneS\RuneS.Installer\obj\x64\Release\net481\RuneS_Setup.exe.config

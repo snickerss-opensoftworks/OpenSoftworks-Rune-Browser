@@ -1,0 +1,319 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         RuneS  —  Browser Style
+         Carbon Blackout · Gloss Dark · Morpheon Dark
+         Real browser layout: tabs left, controls right, NO system border
+    ══════════════════════════════════════════════════════════════════════════ -->
+
+    <!-- ── Brushes ──────────────────────────────────────────────────────────── -->
+    <SolidColorBrush x:Key="BgWindow"       Color="#FF080A0E"/>
+    <SolidColorBrush x:Key="BgTitle"        Color="#FF0B0D12"/>
+    <SolidColorBrush x:Key="BgTabBar"       Color="#FF0B0D12"/>
+    <SolidColorBrush x:Key="BgTabActive"    Color="#FF1A1C22"/>
+    <SolidColorBrush x:Key="BgTabInactive"  Color="#FF0B0D12"/>
+    <SolidColorBrush x:Key="BgTabHover"     Color="#FF161820"/>
+    <SolidColorBrush x:Key="BgNav"          Color="#FF13151B"/>
+    <SolidColorBrush x:Key="BgAddr"         Color="#FF1C1E26"/>
+    <SolidColorBrush x:Key="BgHover"        Color="#FF1E2028"/>
+    <SolidColorBrush x:Key="BgPress"        Color="#FF262830"/>
+
+    <SolidColorBrush x:Key="Accent"         Color="#FF4D9EFF"/>
+    <SolidColorBrush x:Key="AccentDim"      Color="#FF2A6ECC"/>
+    <SolidColorBrush x:Key="Green"          Color="#FF4EC94E"/>
+    <SolidColorBrush x:Key="Red"            Color="#FFE8223A"/>
+    <SolidColorBrush x:Key="Orange"         Color="#FFFFA040"/>
+
+    <SolidColorBrush x:Key="Text"           Color="#FFF0F2F8"/>
+    <SolidColorBrush x:Key="TextSub"        Color="#FF8890A4"/>
+    <SolidColorBrush x:Key="TextDim"        Color="#FF44485A"/>
+    <SolidColorBrush x:Key="TextAddr"       Color="#FFD8DCE8"/>
+
+    <SolidColorBrush x:Key="Border"         Color="#FF1E2130"/>
+    <SolidColorBrush x:Key="Border2"        Color="#FF2E3245"/>
+    <SolidColorBrush x:Key="BorderAddr"     Color="#FF282C3A"/>
+    <SolidColorBrush x:Key="Sep"            Color="#FF13151B"/>
+
+    <!-- Gloss top-edge highlight on toolbars -->
+    <LinearGradientBrush x:Key="Gloss" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#12FFFFFF" Offset="0"/>
+        <GradientStop Color="#00FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Accent gradient for primary buttons -->
+    <LinearGradientBrush x:Key="AccentGrad" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#FF2A6ECC" Offset="0"/>
+        <GradientStop Color="#FF4D9EFF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- ── Shared font ──────────────────────────────────────────────────────── -->
+    <FontFamily x:Key="Ui">Segoe UI</FontFamily>
+
+    <!-- ── Base TextBlock ───────────────────────────────────────────────────── -->
+    <Style TargetType="TextBlock">
+        <Setter Property="FontFamily"                          Value="{StaticResource Ui}"/>
+        <Setter Property="Foreground"                          Value="{StaticResource Text}"/>
+        <Setter Property="FontSize"                            Value="12"/>
+        <Setter Property="TextOptions.TextFormattingMode"      Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode"       Value="ClearType"/>
+    </Style>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         Icon Button  (nav toolbar)
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <Style x:Key="IconBtn" TargetType="Button">
+        <Setter Property="Background"       Value="Transparent"/>
+        <Setter Property="BorderBrush"      Value="Transparent"/>
+        <Setter Property="BorderThickness"  Value="0"/>
+        <Setter Property="Foreground"       Value="{StaticResource TextSub}"/>
+        <Setter Property="Width"            Value="34"/>
+        <Setter Property="Height"           Value="34"/>
+        <Setter Property="Cursor"           Value="Hand"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="R" Background="{TemplateBinding Background}"
+                            CornerRadius="5" Padding="6">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="R" Property="Background"
+                                    Value="{StaticResource BgHover}"/>
+                            <Setter Property="Foreground" Value="{StaticResource Text}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="R" Property="Background"
+                                    Value="{StaticResource BgPress}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         Window chrome buttons (min/max/close)
+         These live in the tab strip row on the RIGHT — no separate title bar
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <Style x:Key="WinBtn" TargetType="Button">
+        <Setter Property="Background"       Value="Transparent"/>
+        <Setter Property="BorderBrush"      Value="Transparent"/>
+        <Setter Property="BorderThickness"  Value="0"/>
+        <Setter Property="Foreground"       Value="{StaticResource TextDim}"/>
+        <Setter Property="Width"            Value="46"/>
+        <Setter Property="Height"           Value="36"/>
+        <Setter Property="Cursor"           Value="Arrow"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="R" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="R" Property="Background"
+                                    Value="{StaticResource BgHover}"/>
+                            <Setter Property="Foreground" Value="{StaticResource Text}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="R" Property="Background"
+                                    Value="{StaticResource BgPress}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CloseBtn" TargetType="Button" BasedOn="{StaticResource WinBtn}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="R" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="R" Property="Background"
+                                    Value="{StaticResource Red}"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="R" Property="Background" Value="#FFB01828"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         Tab chip  (browser-style, integrated into title bar row)
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <Style x:Key="TabBtn" TargetType="Button">
+        <Setter Property="Background"       Value="{StaticResource BgTabInactive}"/>
+        <Setter Property="BorderBrush"      Value="Transparent"/>
+        <Setter Property="BorderThickness"  Value="0"/>
+        <Setter Property="Foreground"       Value="{StaticResource TextSub}"/>
+        <Setter Property="FontFamily"       Value="{StaticResource Ui}"/>
+        <Setter Property="FontSize"         Value="11.5"/>
+        <Setter Property="Height"           Value="36"/>
+        <Setter Property="MinWidth"         Value="100"/>
+        <Setter Property="MaxWidth"         Value="220"/>
+        <Setter Property="Padding"          Value="8,0,4,0"/>
+        <Setter Property="Cursor"           Value="Hand"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border x:Name="Bg"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="6,6,0,0"
+                                Margin="1,3,1,0"/>
+                        <!-- Gloss shine -->
+                        <Border x:Name="Shine"
+                                Background="{StaticResource Gloss}"
+                                CornerRadius="6,6,0,0"
+                                Margin="1,3,1,0"
+                                Opacity="0" IsHitTestVisible="False"/>
+                        <ContentPresenter Margin="{TemplateBinding Padding}"
+                                          VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bg" Property="Background"
+                                    Value="{StaticResource BgTabHover}"/>
+                            <Setter TargetName="Shine" Property="Opacity" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- New tab (+) button -->
+    <Style x:Key="NewTabBtn" TargetType="Button" BasedOn="{StaticResource IconBtn}">
+        <Setter Property="Width"  Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="2,3,0,0"/>
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+    </Style>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         Address bar TextBox
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <Style x:Key="AddrBox" TargetType="TextBox">
+        <Setter Property="Background"               Value="Transparent"/>
+        <Setter Property="BorderBrush"              Value="Transparent"/>
+        <Setter Property="BorderThickness"          Value="0"/>
+        <Setter Property="Foreground"               Value="{StaticResource TextAddr}"/>
+        <Setter Property="CaretBrush"               Value="{StaticResource Accent}"/>
+        <Setter Property="SelectionBrush"           Value="{StaticResource AccentDim}"/>
+        <Setter Property="FontFamily"               Value="{StaticResource Ui}"/>
+        <Setter Property="FontSize"                 Value="13"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FocusVisualStyle"         Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <ScrollViewer x:Name="PART_ContentHost" Focusable="False"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  Background="Transparent"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         Find bar TextBox
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <Style x:Key="FindBox" TargetType="TextBox" BasedOn="{StaticResource AddrBox}">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{StaticResource Text}"/>
+    </Style>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         Bookmark bar button
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <Style x:Key="BookmarkBtn" TargetType="Button">
+        <Setter Property="Background"       Value="Transparent"/>
+        <Setter Property="BorderBrush"      Value="Transparent"/>
+        <Setter Property="BorderThickness"  Value="0"/>
+        <Setter Property="Foreground"       Value="{StaticResource TextSub}"/>
+        <Setter Property="FontFamily"       Value="{StaticResource Ui}"/>
+        <Setter Property="FontSize"         Value="11"/>
+        <Setter Property="Padding"          Value="7,2"/>
+        <Setter Property="Height"           Value="22"/>
+        <Setter Property="Cursor"           Value="Hand"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="R" Background="{TemplateBinding Background}"
+                            CornerRadius="4" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="R" Property="Background"
+                                    Value="{StaticResource BgHover}"/>
+                            <Setter Property="Foreground" Value="{StaticResource Text}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="R" Property="Background"
+                                    Value="{StaticResource BgPress}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         Progress bar (load indicator under address bar)
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <Style x:Key="LoadBar" TargetType="ProgressBar">
+        <Setter Property="Height"          Value="2"/>
+        <Setter Property="Background"      Value="Transparent"/>
+        <Setter Property="BorderBrush"     Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground"      Value="{StaticResource Accent}"/>
+        <Setter Property="IsIndeterminate" Value="True"/>
+    </Style>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         Zoom label in status bar
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <Style x:Key="ZoomLabel" TargetType="TextBlock">
+        <Setter Property="Foreground"    Value="{StaticResource TextDim}"/>
+        <Setter Property="FontSize"      Value="10.5"/>
+        <Setter Property="Width"         Value="36"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin"        Value="2,0"/>
+        <Setter Property="Cursor"        Value="Hand"/>
+    </Style>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         Find bar icon button (smaller)
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <Style x:Key="FindBtn" TargetType="Button" BasedOn="{StaticResource IconBtn}">
+        <Setter Property="Width"  Value="26"/>
+        <Setter Property="Height" Value="26"/>
+    </Style>
+
+</ResourceDictionary>
